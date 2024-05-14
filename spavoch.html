@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Справочник контрагентов юридических лиц</title>
+   <style>
+      /* Ваши стили CSS */
+      body {
+         background-color: #eae5e5;
+      }
+
+      .tab {
+         display: flex;
+         flex-direction: row;
+      }
+
+      .tab button {
+         display: flex;
+         justify-items: auto;
+         text-align: center;
+         justify-content: center;
+         height: 50px;
+         width: 90%;
+         margin-bottom: 10px;
+         margin-right: 5px;
+         align-items: center;
+         font-family: Verdana, Geneva, Tahoma, sans-serif;
+         font-size: larger;
+         border: none;
+         border-radius: 20px 20px 0px 0px;
+         background: -webkit-linear-gradient(0deg, #86d0d1, #009eff, #1134ff);
+         background: linear-gradient(-90deg, #f9893a, #ffb560, #b05c33);
+
+      }
+
+
+
+
+      table {
+         display: flexbox;
+         margin-top: 5%;
+         width: 50%;
+         border-collapse: collapse;
+         text-align: center;
+         background-color: #ddd;
+         justify-content: center;
+      }
+
+      th,
+      td {
+         border: 1px solid #dddddd;
+         text-align: left;
+         padding: 8px;
+         text-align: center;
+
+      }
+
+      th {
+         background-color: #f2f2f2;
+      }
+
+      .container {
+         display: flex;
+         flex-direction: row;
+         width: 100%;
+         height: 1080px;
+
+
+
+      }
+
+      .container button {
+         display: flex;
+
+      }
+
+
+
+      .contracts-list {
+         width: 50%;
+         display: flex;
+         width: max-content;
+         flex-direction: column;
+         height: 100%;
+         align-items: center;
+         font-size: larger;
+         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+      }
+
+      .contracts-list button {
+         width: 50%;
+         margin: 2px;
+         display: flex;
+         width: max-content;
+         flex-direction: column;
+
+         align-items: center;
+         background-color: aliceblue;
+         font-size: larger;
+         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+         border: none;
+         border-radius: 20px 0px 00px 20px;
+      }
+
+
+      .contracts-list button:hover {
+         position: relative;
+         z-index: 1;
+         background-color: rgba(135, 223, 223, 0.296);
+         border: 0.5px solid yellow;
+      }
+
+      button:active {
+         background: -webkit-linear-gradient(90deg, #ff0000, #ff6363, #ff6a00);
+         background: linear-gradient(90deg, #ff0000, #ff6363, #ff6a00);
+      }
+
+
+      .contract-form {
+         width: 100%;
+         margin-left: 5px;
+         margin-right: 5px;
+         padding: 1px;
+         height: max-content;
+         border-radius: 20px 0px 0px 20px;
+
+
+         /* Добавляем отступ слева для разделения контейнеров */
+      }
+
+
+      h2 {
+         display: flex;
+         font-size: x-large;
+         color: #ff0000;
+         justify-content: center;
+      }
+
+
+
+
+      #Contracts h3 {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: x-large;
+         color: rgb(56, 24, 107);
+
+
+
+         /* Добавляем отступ слева для разделения контейнеров */
+      }
+
+      .contract-form form {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         justify-content: center;
+         position: relative;
+         width: 100%;
+         height: 100%;
+         padding-left: 100px;
+         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+         background-color: #eae5e5;
+         max-width: 600px;
+      }
+
+      .contract-form form input {
+         width: 90%;
+         border: 0.5px solid rgb(209, 207, 207);
+         margin-top: 10px;
+         height: 30px;
+         font-size: large;
+
+      }
+
+      .contract-form form label {
+         display: inline-block;
+         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+         font-size: large;
+         margin-top: 10px;
+
+      }
+
+      #c1 {
+         width: auto;
+      }
+
+      .tablink.active {
+         background-color: #ddd;
+      }
+
+
+      .tabcontent {
+         background-color: darksalmon;
+         font-family: Arial, Helvetica, sans-serif;
+         background: -webkit-linear-gradient(30deg, #c0cbe2, #7798cb);
+         background: linear-gradient(30deg, #c0cbe2, #7798cb);
+         border-radius: 0px 0px 20px 20px;
+         padding: 10px;
+      }
+   </style>
+</head>
+
+<body onload="openCity(event, 'Contracts')">
+
+   <h2>Справочник контрагентов</h2>
+
+   <div class="tab">
+      <button class="tablink" onclick="openCity(event, 'General')">Общие сведения</button>
+      <button class="tablink" onclick="openCity(event, 'Contracts')">Договора</button>
+      <button class="tablink" onclick="openCity(event, 'Payments')">Платежи</button>
+   </div>
+
+   <div id="General" class="tabcontent">
+      <h3>Общие сведения о компании</h3>
+      <p><strong>Название компании:</strong> ООО "Примерная компания"</p>
+      <p><strong>Тип организации:</strong> Общество с ограниченной ответственностью (ООО)</p>
+      <p><strong>Юридический адрес:</strong> 123456, г. Москва, ул. Пушкина, д. 10, офис 201</p>
+      <p><strong>Фактический адрес:</strong> 123457, г. Москва, ул. Ленина, д. 15, офис 305</p>
+      <p><strong>ИНН (Идентификационный номер налогоплательщика):</strong> 1234567890</p>
+      <p><strong>КПП (Код причины постановки на учет):</strong> 987654321</p>
+      <p><strong>ОГРН (Основной государственный регистрационный номер):</strong> 1234567890123</p>
+      <p><strong>Дата регистрации:</strong> 01.01.2000</p>
+      <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+      <p><strong>Email:</strong> info@example.com</p>
+      <p><strong>Веб-сайт:</strong> <a href="http://www.example.com">www.example.com</a></p>
+      <p><strong>Описание деятельности:</strong> ООО "Примерная компания" занимается разработкой программного
+         обеспечения для бизнеса с фокусом на инновационные технологии. Мы предоставляем широкий спектр услуг, включая
+         создание веб-сайтов, мобильных приложений, программ для автоматизации бизнес-процессов и многое другое.</p>
+      <p><strong>Дополнительная информация:</strong> Компания имеет успешный опыт работы на рынке информационных
+         технологий более 20 лет. Наша команда состоит из опытных специалистов с высоким уровнем квалификации.</p>
+   </div>
+
+   <div id="Contracts" class="tabcontent">
+      <h3>Договора</h3>
+      <div onload="opendoc(event, 'contract-form1')" class="container">
+         <div class="contracts-list" id="contractsList">
+
+            <button class="contract-button" onclick="opendoc(event, 'contract-form1')">Договор 1</button>
+            <button class="contract-button" onclick="opendoc(event, 'contract-form2')">Договор 2</button>
+            <button class="contract-button" onclick="opendoc(event, 'contract-form3')">Договор 3</button>
+            <button class="contract-button" onclick="opendoc(event, 'contract-form4')">Договор 4</button>
+            <!-- Здесь будет список вертикальных кнопок существующих договоров -->
+         </div>
+         <div class="contract-form" id="contractForm">
+            <!-- Здесь будет отображаться информация о выбранном договоре -->
+            <form action="/action_page.php" id="contract-form1" class="contract_forms">
+               <label for="fname1">Наименование:</label><br>
+               <input type="text" id="fname1" name="firstname1" value="Company A"><br>
+
+               <label for="email1">Email:</label><br>
+               <input type="email" id="email1" name="email1" value="companyA@example.com"><br>
+
+               <label for="phone1">Номер телефона:</label><br>
+               <input type="tel" id="phone1" name="phone1" value="123456789"><br>
+
+               <label for="address1">Юридический адрес:</label><br>
+               <textarea id="address1" name="address1">Улица Пушкина, дом Колотушкина</textarea><br>
+
+               <label for="address2">Фактический адрес:</label><br>
+               <textarea id="address2" name="address2">Проезд Ленина, дом Маркса</textarea><br>
+
+               <legend>Юридическая форма:</legend>
+               <label for="llc1">
+                  <input type="radio" id="c1" name="legalForm1" value="LLC" checked>
+                  ООО
+               </label>
+               <br>
+               <label for="cjsc1">
+                  <input type="radio" id="c1" name="legalForm1" value="CJSC">
+                  ЗАО
+               </label>
+               <br>
+               <label for="ak1">
+                  <input type="radio" id="c1" name="legalForm1" value="AK">
+                  АК
+               </label>
+               <br>
+               <label for="other1">
+                  <input type="radio" id="c1" name="legalForm1" value="other">
+                  Другое
+               </label><br>
+
+               <label for="inn1">ИНН:</label><br>
+               <input type="text" id="inn1" name="inn1" value="1234567890"><br>
+
+               <label for="kpp1">КПП:</label><br>
+               <input type="text" id="kpp1" name="kpp1" value="0987654321"><br>
+
+               <label for="bank1">Банк:</label><br>
+               <input type="text" id="bank1" name="bank1" value="Банк Пушкина"><br>
+
+               <label for="bik1">БИК:</label><br>
+               <input type="text" id="bik1" name="bik1" value="987654321"><br>
+
+               <label for="correspondent_account1">Корреспондентский счет:</label><br>
+               <input type="text" id="correspondent_account1" name="correspondent_account1"
+                  value="12345678901234567890"><br>
+
+               <label for="checking_account1">Расчетный счет:</label><br>
+               <input type="text" id="checking_account1" name="checking_account1" value="98765432109876543210"><br>
+            </form>
+            <form action="/action_page.php" id="contract-form2" class="contract_forms">
+               <label for="fname2">Наименование:</label><br>
+               <input type="text" id="fname2" name="firstname2" value="Company B"><br>
+
+               <label for="email2">Email:</label><br>
+               <input type="email" id="email2" name="email2" value="companyB@example.com"><br>
+
+               <label for="phone2">Номер телефона:</label><br>
+               <input type="tel" id="phone2" name="phone2" value="987654321"><br>
+
+               <label for="address3">Юридический адрес:</label><br>
+               <textarea id="address3" name="address3">Улица Гоголя, дом Достоевского</textarea><br>
+
+               <label for="address4">Фактический адрес:</label><br>
+               <textarea id="address4" name="address4">Проспект Чехова, дом Толстого</textarea><br>
+
+               <legend>Юридическая форма:</legend>
+               <label for="llc2">
+                  <input type="radio" id="c1" name="legalForm2" value="LLC">
+                  ООО
+               </label>
+               <br>
+               <label for="cjsc2">
+                  <input type="radio" id="c1" name="legalForm2" value="CJSC">
+                  ЗАО
+               </label>
+               <br>
+               <label for="ak2">
+                  <input type="radio" id="c1" name="legalForm2" value="AK">
+                  АК
+               </label>
+               <br>
+               <label for="other2">
+                  <input type="radio" id="c1" name="legalForm2" value="other" checked>
+                  Другое
+               </label><br>
+
+               <label for="inn2">ИНН:</label><br>
+               <input type="text" id="inn2" name="inn2" value="9876543210"><br>
+
+               <label for="kpp2">КПП:</label><br>
+               <input type="text" id="kpp2" name="kpp2" value="0123456789"><br>
+
+               <label for="bank2">Банк:</label><br>
+               <input type="text" id="bank2" name="bank2" value="Банк Гоголя"><br>
+
+               <label for="bik2">БИК:</label><br>
+               <input type="text" id="bik2" name="bik2" value="123456789"><br>
+
+               <label for="correspondent_account2">Корреспондентский счет:</label><br>
+               <input type="text" id="correspondent_account2" name="correspondent_account2"
+                  value="98765432109876543210"><br>
+
+               <label for="checking_account2">Расчетный счет:</label><br>
+               <input type="text" id="checking_account2" name="checking_account2" value="12345678901234567890"><br>
+            </form>
+            <form action="/action_page.php" id="contract-form3" class="contract_forms">
+               <label for="fname3">Наименование:</label><br>
+               <input type="text" id="fname3" name="firstname3" value="Company C"><br>
+
+               <label for="email3">Email:</label><br>
+               <input type="email" id="email3" name="email3" value="companyC@example.com"><br>
+
+               <label for="phone3">Номер телефона:</label><br>
+               <input type="tel" id="phone3" name="phone3" value="123456789"><br>
+
+               <label for="address5">Юридический адрес:</label><br>
+               <textarea id="address5" name="address5">Улица Пушкина, дом Гоголя</textarea><br>
+
+               <label for="address6">Фактический адрес:</label><br>
+               <textarea id="address6" name="address6">Проспект Достоевского, дом Чехова</textarea><br>
+
+               <legend>Юридическая форма:</legend>
+               <label for="llc3">
+                  <input type="radio" id="c1" name="legalForm3" value="LLC">
+                  ООО
+               </label>
+               <br>
+               <label for="cjsc3">
+                  <input type="radio" id="c1" name="legalForm3" value="CJSC">
+                  ЗАО
+               </label>
+               <br>
+               <label for="ak3">
+                  <input type="radio" id="c1" name="legalForm3" value="AK" checked>
+                  АК
+               </label>
+               <br>
+               <label for="other3">
+                  <input type="radio" id="c1" name="legalForm3" value="other">
+                  Другое
+               </label><br>
+
+               <label for="inn3">ИНН:</label><br>
+               <input type="text" id="inn3" name="inn3" value="1234567890"><br>
+
+               <label for="kpp3">КПП:</label><br>
+               <input type="text" id="kpp3" name="kpp3" value="0987654321"><br>
+
+               <label for="bank3">Банк:</label><br>
+               <input type="text" id="bank3" name="bank3" value="Банк Достоевского"><br>
+
+               <label for="bik3">БИК:</label><br>
+               <input type="text" id="bik3" name="bik3" value="987654321"><br>
+
+               <label for="correspondent_account3">Корреспондентский счет:</label><br>
+               <input type="text" id="correspondent_account3" name="correspondent_account3"
+                  value="12345678901234567890"><br>
+
+               <label for="checking_account3">Расчетный счет:</label><br>
+               <input type="text" id="checking_account3" name="checking_account3" value="09876543210987654321"><br>
+            </form>
+            <form action="/action_page.php" id="contract-form4" class="contract_forms">
+               <label for="fname4">Наименование:</label><br>
+               <input type="text" id="fname4" name="firstname4" value="Компания D"><br>
+
+               <label for="email4">Email:</label><br>
+               <input type="email" id="email4" name="email4" value="companyD@example.com"><br>
+
+               <label for="phone4">Номер телефона:</label><br>
+               <input type="tel" id="phone4" name="phone4" value="987654321"><br>
+
+               <label for="address7">Юридический адрес:</label><br>
+               <textarea id="address7" name="address7">Улица Толстого, дом Чехова</textarea><br>
+
+               <label for="address8">Фактический адрес:</label><br>
+               <textarea id="address8" name="address8">Проспект Гоголя, дом Достоевского</textarea><br>
+
+               <legend>Юридическая форма:</legend>
+               <label for="llc4">
+                  <input type="radio" id="c1" name="legalForm4" value="ООО" checked>
+                  ООО
+               </label>
+               <br>
+               <label for="cjsc4">
+                  <input type="radio" id="c1" name="legalForm4" value="ЗАО">
+                  ЗАО
+               </label>
+               <br>
+               <label for="ak4">
+                  <input type="radio" id="c1" name="legalForm4" value="АК">
+                  АК
+               </label>
+               <br>
+               <label for="other4">
+                  <input type="radio" id="c1" name="legalForm4" value="Другое">
+                  Другое
+               </label><br>
+
+               <label for="inn4">ИНН:</label><br>
+               <input type="text" id="inn4" name="inn4" value="9876543210"><br>
+
+               <label for="kpp4">КПП:</label><br>
+               <input type="text" id="kpp4" name="kpp4" value="123456789"><br>
+
+               <label for="bank4">Банк:</label><br>
+               <input type="text" id="bank4" name="bank4" value="Банк Толстого"><br>
+
+               <label for="bik4">БИК:</label><br>
+               <input type="text" id="bik4" name="bik4" value="123456789"><br>
+
+               <label for="correspondent_account4">Корреспондентский счет:</label><br>
+               <input type="text" id="correspondent_account4" name="correspondent_account4"
+                  value="98765432109876543210"><br>
+
+               <label for="checking_account4">Расчетный счет:</label><br>
+               <input type="text" id="checking_account4" name="checking_account4" value="12345678901234567890"><br>
+            </form>
+
+            <!-- Добавьте другие поля формы сюда -->
+         </div>
+      </div>
+   </div>
+
+   <div id="Payments" class="tabcontent">
+      <div>
+
+         <table>
+            <thead>
+               <tr>
+                  <th>Контрагент</th>
+                  <th>Сумма</th>
+                  <th>Дата</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Контрагент 1</td>
+                  <td>5000</td>
+                  <td>2023-04-15</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 2</td>
+                  <td>7500</td>
+                  <td>2023-02-20</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 3</td>
+                  <td>3000</td>
+                  <td>2023-05-10</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 4</td>
+                  <td>6000</td>
+                  <td>2023-03-08</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 5</td>
+                  <td>4500</td>
+                  <td>2023-01-25</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 6</td>
+                  <td>8000</td>
+                  <td>2023-06-12</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 7</td>
+                  <td>3500</td>
+                  <td>2023-08-07</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 8</td>
+                  <td>7000</td>
+                  <td>2023-09-18</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 9</td>
+                  <td>4000</td>
+                  <td>2023-07-30</td>
+               </tr>
+               <tr>
+                  <td>Контрагент 10</td>
+                  <td>5500</td>
+                  <td>2023-11-05</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+
+   <script>
+      // Функция для переключения между вкладками
+      function openCity(evt, cityName) {
+         var i, tabcontent, tablinks;
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+         }
+         tablinks = document.getElementsByClassName("tablink");
+         for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+         }
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.style.backgroundColor = "#ddd";
+      }
+      function opendoc(evt, docname) {
+         var i, contract_button, contract_form;
+         contract_forms = document.getElementsByClassName("contract_forms");
+         for (i = 0; i < contract_forms.length; i++) {
+            contract_forms[i].style.display = "none";
+         }
+         contract_buttons = document.getElementsByClassName("contract-button");
+         for (i = 0; i < contract_buttons.length; i++) {
+            contract_buttons[i].style.backgroundColor = "";
+         }
+         document.getElementById(docname).style.display = "block";
+         evt.currentTarget.style.backgroundColor = "#ddd";
+      }
+      function hideAllDocumentsExcept(docName) {
+         var i, contract_forms;
+         contract_forms = document.getElementsByClassName("contract_forms");
+         for (i = 0; i < contract_forms.length; i++) {
+            contract_forms[i].style.display = "none";
+         }
+         document.getElementById(docName).style.display = "block";
+      }
+
+      // Вызываем функцию hideAllDocumentsExcept с именем первого документа при загрузке страницы
+      window.onload = function () {
+         hideAllDocumentsExcept('contract-form1');
+      };
+      function hideAllDocumentsException(cityName) {
+         var i, tabcontents;
+         tabcontents = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontents.length; i++) {
+            tabcontents[i].style.display = "none";
+         }
+         document.getElementById(cityName).style.display = "block";
+      }
+
+      // Вызываем функцию hideAllDocumentsExcept с именем первого документа при загрузке страницы
+      window.onload = function () {
+         hideAllDocumentsException('Contracts');
+
+         hideAllDocumentsExcept('contract-form1');
+
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </script>
+
+</body>
+
+</html>
